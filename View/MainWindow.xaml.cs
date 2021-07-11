@@ -1,4 +1,5 @@
-﻿using HomeWork_14_WPF.Model;
+﻿using HomeWork_14_WPF.Messages;
+using HomeWork_14_WPF.Model;
 using HomeWork_14_WPF.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ namespace HomeWork_14_WPF
             Messenger.Default.Register<BankDepartment>(AddDepositCapitalizeViewModel.SetBankDepartment);
             Messenger.Default.Register<Dictionary<BankDepartment, uint>>(AddDepositNoCapitalizeViewModel.SetBankDepartment);
             Messenger.Default.Register<Dictionary<Client, short>>(RateViewModel.SetClient);
+            Messenger.Default.Register<string>(Message.SendTo);
         }
 
         /// <summary>
@@ -57,6 +59,7 @@ namespace HomeWork_14_WPF
             Messenger.Default.Unregister<BankDepartment>(AddDepositCapitalizeViewModel.SetBankDepartment);
             Messenger.Default.Unregister<Dictionary<BankDepartment, uint>>(AddDepositNoCapitalizeViewModel.SetBankDepartment);
             Messenger.Default.Unregister<Dictionary<Client, short>>(RateViewModel.SetClient);
+            Messenger.Default.Unregister<string>(Message.SendTo);
         }
     }
 }

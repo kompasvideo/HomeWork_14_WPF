@@ -74,10 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DisplayRootRegistry.cs" />
-    <Compile Include="Messages\IMessage.cs" />
-    <Compile Include="Messages\TextMessage.cs" />
-    <Compile Include="Services\MessageBus.cs" />
-    <Compile Include="Services\Subscriber.cs" />
+    <Compile Include="Messages\Message.cs" />
     <Compile Include="ViewModel\AddAccountViewModel.cs" />
     <Compile Include="ViewModel\AddDepositCapitalizeViewModel.cs" />
     <Compile Include="ViewModel\AddDepositNoCapitalizeViewModel.cs" />
@@ -142,7 +139,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\Messenger.cs" />
+    <Compile Include="Messages\Messenger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -211,7 +211,6 @@ namespace HomeWork_14_WPF.ViewModel
 
                     var addAccountViewModel = new AddAccountViewModel();
                     displayRootRegistry.ShowModalPresentation(addAccountViewModel);
-                    //(Application.Current as App)._messageBus.SendTo<LogPageViewModel>(new TextMessage(LogText));
                 });
                 return a;
             }
@@ -223,6 +222,7 @@ namespace HomeWork_14_WPF.ViewModel
         public static void ReturnAddClient(Client client)
         {
             clients.Add(client);
+            Messenger.Default.Send($"{DateTime.Now} Открыт счёт для '{client.Name}' на сумму '{client.Money}'");
         }
         #endregion
 
@@ -246,6 +246,7 @@ namespace HomeWork_14_WPF.ViewModel
                         if (MessageBox.Show($"Закрыть счёт для   '{SelectedClient.Name}'", "Закрыть счёт", MessageBoxButton.YesNo) == MessageBoxResult.No)
                             return;
                         clients.Remove(SelectedClient);
+                        Messenger.Default.Send($"{DateTime.Now} Закрыт счёт для '{SelectedClient.Name}' на сумму '{SelectedClient.Money}'");
                     }
                 });
                 return a;
@@ -294,13 +295,13 @@ namespace HomeWork_14_WPF.ViewModel
                     SelectedClient.Money -= moveMoney;
                     moveClient.Money += moveMoney;
                     Source.Filter = new Predicate<object>(MyFilter);
+                    Messenger.Default.Send($"{DateTime.Now} Переведена сумма '{moveClient.Money}' с счёта '{SelectedClient.Name}' на счёт '{moveClient.Name}'");
                 }
                 else
                 {
                     MessageBox.Show($"На счёту клиента {SelectedClient} недостаточно средств", "Перевести на другой счёт");
                 }
             }
-            //SelectedClient.Money = 
         }
         #endregion
 
@@ -361,6 +362,7 @@ namespace HomeWork_14_WPF.ViewModel
         {
             SelectedClient.DepositClient = deposit;
             SelectedClient.DepositClientStr = "вклад без капитализации %";
+            Messenger.Default.Send($"{DateTime.Now} Открыт вклад без капитализации % для '{SelectedClient.Name}'");
         }
         #endregion
 
@@ -417,6 +419,7 @@ namespace HomeWork_14_WPF.ViewModel
         {
             SelectedClient.DepositClient = deposit;
             SelectedClient.DepositClientStr = "вклад с капитализацией %";
+            Messenger.Default.Send($"{DateTime.Now} Открыт вклад c капитализацией % для '{SelectedClient.Name}'");
         }
         #endregion
 
@@ -441,6 +444,7 @@ namespace HomeWork_14_WPF.ViewModel
                         client.Add(SelectedClient, 0);
                         Messenger.Default.Send(client);
                         displayRootRegistry.ShowModalPresentation(rateViewModel);
+                        Messenger.Default.Send($"{DateTime.Now} Показано окно с расчётом % для '{SelectedClient.Name}'");
                     }
                     else
                         MessageBox.Show("Не выбран клиент", "Расчёт %");
