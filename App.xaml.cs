@@ -17,6 +17,7 @@ namespace HomeWork_14_WPF
     {
         public DisplayRootRegistry displayRootRegistry = new DisplayRootRegistry();
         MainViewModel mainWindowViewModel;
+        public readonly MessageBus _messageBus;
 
         public App()
         {
@@ -26,6 +27,7 @@ namespace HomeWork_14_WPF
             displayRootRegistry.RegisterWindowType<AddDepositNoCapitalizeViewModel, AddDepositNoCapitalizeWindow>();
             displayRootRegistry.RegisterWindowType<MoveMoneyViewModel, MoveMoneyWindow>();
             displayRootRegistry.RegisterWindowType<RateViewModel, RateWindow>();
+            //_messageBus = new MessageBus();
         }
 
         protected override void OnStartup(StartupEventArgs e)

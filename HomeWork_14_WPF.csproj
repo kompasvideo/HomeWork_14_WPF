@@ -74,10 +74,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DisplayRootRegistry.cs" />
-    <Compile Include="Logs\LogEntry.cs" />
-    <Compile Include="Logs\LogProcessor.cs" />
-    <Compile Include="Logs\CMessage.cs" />
-    <Compile Include="Logs\CMessageType.cs" />
     <Compile Include="Messages\IMessage.cs" />
     <Compile Include="Messages\TextMessage.cs" />
     <Compile Include="Services\MessageBus.cs" />

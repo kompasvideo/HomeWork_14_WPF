@@ -9,7 +9,6 @@ using DevExpress.Mvvm;
 using System.Windows.Input;
 using HomeWork_14_WPF.View;
 using System.Windows;
-using HomeWork_14_WPF.Logs;
 
 namespace HomeWork_14_WPF.ViewModel
 {
@@ -212,6 +211,7 @@ namespace HomeWork_14_WPF.ViewModel
 
                     var addAccountViewModel = new AddAccountViewModel();
                     displayRootRegistry.ShowModalPresentation(addAccountViewModel);
+                    //(Application.Current as App)._messageBus.SendTo<LogPageViewModel>(new TextMessage(LogText));
                 });
                 return a;
             }
